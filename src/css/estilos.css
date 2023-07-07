@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Oxanium", cursive;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/*Declaração de um pseudoelemento: através da declaração abaixo conseguimos "criar" um elemento html que não existe dentro do arquivo index*/
+body::before {
+    content: "";
+    background-image: url(../imagens/bg-desktop.jpg); /*Os dois pontos ".." servem para voltar uma pasta*/
+    background-repeat: no-repeat; /*Evita a repetição da imagem*/
+    background-size: cover; /*Cobre todo o elemento em que está posicionado*/
+    background-position: center; /*Alinha a imagem para evitar ficar torta*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1; /*Joga a imagem para a camada atrás dos elementos do html*/
+    opacity: 0.2; /*Gera opacidade na imagem*/
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: center;
+}
+
+.selecao-de-personagens {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  min-height: calc(100vh - 152px);
+  justify-content: center;
+}
+
+/* Aqui estilizamos um elemento que tem a segunda classe e está inserido dentro de um elemento que tem a primeira classe
+ */
+.selecao-de-personagens .lista-de-personagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.selecao-de-personagens .personagens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 585px;
+  gap: 25px;
+}
+
+.selecao-de-personagens .personagens .titulo {
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-bottom: 2px solid #47f4ff;
+  width: 100%;
+  text-align: center;
+}
+
+.lista-de-personagens .personagem img {
+  width: 100%;
+  height: 100%;
+}
+
+.lista-de-personagens .personagem {
+    border-bottom: 2.5px solid #47f4ff;
+}
+
+/* Duas classes sem estarem separadas por espaço significa que o estilo será aplicado para ambas as classes. O elemento precisa ter as duas classes. Retiramos a segunda classe por enquanto, pois trabalharemos dentro do JS com adicionar e remover classes, e a classe "selecionado" será a que estará sendo adicionada e removida. Sendo assim, o estilo abaixo será direcionado apenas para o personagem que estiver selecionado com o cursor do mouse por cima do seu card.*/
+.lista-de-personagens .personagem.selecionado {
+  box-shadow: 0px 0px 24px 5px #0271f7;
+}
+
+/* A classe abaixo é apenas uma, referente a section da direita do site, onde será exibida a imagem grande do personagem. */
+.personagem-selecionado {
+  text-align: center;
+  max-height: 530px;
+}
+
+.personagem-selecionado .personagem-grande {
+  width: 430px;
+  height: 430px;
+}
+
+.personagem-selecionado .nome-personagem {
+    border-bottom: 2px solid #47f4ff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.personagem-selecionado .descricao-personagem {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 20px;
+    width: 420px;
+}
+
