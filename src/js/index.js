@@ -4,20 +4,42 @@ const personagens = document.querySelectorAll('.personagem');
 personagens.forEach((personagem) => {
     personagem.addEventListener("mouseenter", () => {
 
-        const personagemSelecionado = document.querySelector('.selecionado');
-        personagemSelecionado.classList.remove('selecionado');
+        if(window.innerWidth < 450) {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        removerPersonagemSelecionado();
 
         personagem.classList.add('selecionado');
 
-        const imagemPersonagemGrande = document.querySelector('.personagem-grande');
-        
-        const idPersonagem = personagem.attributes.id.value;
-        imagemPersonagemGrande.src = `./src/imagens/card-${idPersonagem}.png`;
+        alterarImagemPersonagemSelecionado (personagem);
 
-        const nomePersonagem = document.getElementById('nome-personagem');
-        nomePersonagem.innerText = personagem.getAttribute('data-name');
+        alteraNomePersonagem (personagem);
+
+        alteraDescricaoPersonagem (personagem);
         
     });
 })
+
+function removerPersonagemSelecionado() {
+    const personagemSelecionado = document.querySelector('.selecionado');
+    personagemSelecionado.classList.remove('selecionado');
+}
+
+function alterarImagemPersonagemSelecionado (personagem) {
+    const imagemPersonagemGrande = document.querySelector('.personagem-grande');
+    const idPersonagem = personagem.attributes.id.value;
+    imagemPersonagemGrande.src = `./src/imagens/card-${idPersonagem}.png`;
+}
+
+function alteraNomePersonagem (personagem) {
+    const nomePersonagem = document.getElementById('nome-personagem');
+    nomePersonagem.innerText = personagem.getAttribute('data-name');
+}
+
+function alteraDescricaoPersonagem (personagem) {
+    const descricaoPersonagem = document.getElementById('descricao-personagem');
+    descricaoPersonagem.innerText = personagem.getAttribute('data-description');
+}
 
 
